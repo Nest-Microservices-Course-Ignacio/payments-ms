@@ -1,0 +1,5 @@
+version: '3'
+services:
+  strapi-cli:
+    image: strapi/strapi:latest
+    

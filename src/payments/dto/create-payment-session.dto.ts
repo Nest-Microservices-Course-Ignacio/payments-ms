@@ -13,6 +13,10 @@ import { Currency } from '../common/types/currency.enum';
 
 export class CreatePaymentSessionDto {
   @IsString()
+  @IsNotEmpty()
+  orderId: string;
+
+  @IsString()
   @IsEnum(Currency)
   currency: Currency;
 
