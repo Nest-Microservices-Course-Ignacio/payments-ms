@@ -1,13 +1,14 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { PaymentsService } from './payments.service';
+import { CreatePaymentSessionDto } from './dto/create-payment-session.dto';
 
 @Controller('payments')
 export class PaymentsController {
   constructor(private readonly paymentsService: PaymentsService) {}
 
   @Post('create-payment-session')
-  createPaymentSession() {
-    return 'createPaymentSession';
+  createPaymentSession(@Body() payload: CreatePaymentSessionDto) {
+    return this.paymentsService.createPaymentSession(payload);
   }
 
   @Post('webhook')
