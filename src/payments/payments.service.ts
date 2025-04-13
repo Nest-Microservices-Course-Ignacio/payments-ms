@@ -26,14 +26,14 @@ export class PaymentsService {
         quantity: item.quantity,
       })),
       mode: 'payment',
-      success_url: 'http://localhost:3000/api/payments/success',
-      cancel_url: 'http://localhost:3000/api/payments/cancel',
+      success_url: `${envs.apiGateway}/payments/success`,
+      cancel_url: `${envs.apiGateway}/payments/cancel`,
     });
   }
 
   webhook(request: Request, response: Response) {
     const signature = request.headers['stripe-signature'];
-    const endpointSecret = 'whsec_GxsuL7g4RjvxUXXZY9P9IM5wkZNu5rBW';
+    const endpointSecret = envs.webhookSecret;
 
     /* testing */
     // const endpointSecret =
