@@ -11,13 +11,15 @@ async function bootstrap() {
     rawBody: true,
   });
 
-  app.connectMicroservice<MicroserviceOptions>({
-    transport: Transport.NATS,
-    options: {
-      servers: envs.natsServers,
-      reconnect: true,
+  app.connectMicroservice<MicroserviceOptions>(
+    {
+      transport: Transport.NATS,
+      options: {
+        servers: envs.natsServers,
+      },
     },
-  });
+    { inheritAppConfig: true },
+  );
 
   await app.startAllMicroservices();
 
@@ -29,7 +31,7 @@ async function bootstrap() {
     }),
   );
   await app.listen(envs.port);
-  
+
   Logger.log(`Starting server on port ${envs.port}`, 'Payments Service');
 }
 bootstrap();
