@@ -11,7 +11,7 @@ export class PaymentsController {
   @Post('create-payment-session')
   @MessagePattern({ cmd: 'create.payment.session' })
   createPaymentSession(@Body() payload: CreatePaymentSessionDto) {
-    // return this.paymentsService.createPaymentSession(payload);
+    return this.paymentsService.createPaymentSession(payload);
   }
 
   @Post('webhook')

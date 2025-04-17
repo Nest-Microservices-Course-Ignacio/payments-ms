@@ -11,6 +11,7 @@ async function bootstrap() {
     rawBody: true,
   });
 
+  app.setGlobalPrefix('/api');
   app.connectMicroservice<MicroserviceOptions>(
     {
       transport: Transport.NATS,

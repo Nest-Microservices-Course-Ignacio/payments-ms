@@ -10,7 +10,7 @@ export class PaymentsService {
 
   async createPaymentSession(payload: CreatePaymentSessionDto) {
     const { items, currency, orderId } = payload;
-    return await this.stripe.checkout.sessions.create({
+    const paymentSession = await this.stripe.checkout.sessions.create({
       // add id of the order
       payment_intent_data: {
         metadata: {
@@ -29,6 +29,12 @@ export class PaymentsService {
       success_url: `${envs.apiGateway}/payments/success`,
       cancel_url: `${envs.apiGateway}/payments/cancel`,
     });
+
+    return {
+      success_url: paymentSession.success_url,
+      cancel_url: paymentSession.cancel_url,
+      url: paymentSession.url,
+    };
   }
 
   webhook(request: Request, response: Response) {
