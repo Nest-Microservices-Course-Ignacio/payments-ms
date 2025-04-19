@@ -16,6 +16,9 @@ export class PaymentsController {
 
   @Post('webhook')
   stripeWebhook(@Req() request: Request, @Res() response: Response) {
+    // return response.status(200).send({
+    //   msg: 'hello',
+    // });
     return this.paymentsService.webhook(request, response);
   }
 
