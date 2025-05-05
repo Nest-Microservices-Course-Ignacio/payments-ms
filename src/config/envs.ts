@@ -36,7 +36,7 @@ export const envVars: EnvVars = value;
 export const envs = {
   port: envVars.PORT,
   stripeSecretKey: envVars.STRIPE_SECRET_KEY,
-  apiGateway: envVars.API_GATEWAY /* TODO: change this */,
+  apiGateway: envVars.API_GATEWAY,
   webhookSecret: envVars.WEBHOOK_SECRET,
   natsServers: envVars.NATS_SERVERS,
 };
